@@ -20,6 +20,7 @@
     "url": "https://github.com/taskcluster/task-factory/issues"
   },
   "dependencies": {
-    "object-factory": "~0.1.2"
+    "object-factory": "~0.1.2",
+    "uuid": "~1.4.1"
   }
 }
