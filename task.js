@@ -1,39 +1,58 @@
+/**
+@see https://github.com/lightsofapollo/object-factory
+@tutorial task_factories
+@module taskcluster-client/factory/task
+*/
 var Factory = require('object-factory');
-var Result = require('./result');
+var Tags = new Factory();
 
-var uuid = require('uuid');
-
-var STATES = {
-  pending: 'pending',
-  running: 'running',
-  completed: 'completed'
-};
-
-var Task = new Factory({
-  properties: {
-    version: '0.0.0',
-    tags: new Factory(),
-    parameters: new Factory(),
-    priority: 0,
-    max_retries: 0,
-    max_runtime_seconds: 7200,
-    max_pending_seconds: 86400,
-    state: STATES.pending,
-    data: new Factory()
+var Payload = new Factory({
+  onbuild: function(object) {
+    object.command = object.command || ['/bin/bash -c', 'ls -lah'];
+    object.env = object.env || {};
+    object.features = object.features || {};
   },
 
-  onbuild: function(props) {
-    // for convenience set a group uuid if not provided.
-    if (!('group_id' in props)) props.group_id = uuid.v4();
-
-    props.command = props.command || [];
-
-    if (props.result) {
-      props.result = Result.create(props.result);
-    }
+  properties: {
+    image: 'ubuntu',
+    maxRunTime: 600,
+    // onbuild above handles this
+    // command: []
   }
 });
 
-Task.STATES = STATES;
+var Metadata = new Factory({
+  properties: {
+    name: '',
+    description: '',
+    owner: '',
+    source: 'http://localhost'
+  }
+});
+
+var Task = new Factory({
+  onbuild: function(object) {
+    object.created = object.created || new Date();
+
+    var defaultDeadline = new Date(object.created);
+    defaultDeadline.setHours(defaultDeadline.getHours() + 24);
+    object.deadline = object.deadline || defaultDeadline;
+  },
+
+  properties: {
+    version: '0.2.0',
+    provisionerId: 'dont-spawn-machines',
+    routing: '',
+    // workerType: ''
+    timeout: 180, // in seconds
+    retries: 1,
+    priority: 5,
+    // created: new Date()
+    // deadline: new Date()
+    payload: Payload,
+    metadata: Metadata,
+    tags: Tags
+  }
+});
 
 module.exports = Task;

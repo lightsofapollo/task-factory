@@ -5,4 +5,4 @@ node_modules: package.json
 
 test:
 	./node_modules/.bin/object-factory-viewer task.js
-	./node_modules/.bin/object-factory-viewer result.js
+	./node_modules/.bin/object-factory-viewer graph.js
