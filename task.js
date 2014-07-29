@@ -40,11 +40,9 @@ var Task = new Factory({
   },
 
   properties: {
-    version: '0.2.0',
     provisionerId: 'dont-spawn-machines',
     routing: '',
     // workerType: ''
-    timeout: 180, // in seconds
     retries: 1,
     priority: 5,
     // created: new Date()
