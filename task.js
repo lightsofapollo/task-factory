@@ -37,7 +37,7 @@ var Task = new Factory({
     var defaultDeadline = new Date(object.created);
     defaultDeadline.setHours(defaultDeadline.getHours() + 24);
     object.deadline = object.deadline || defaultDeadline;
-    object.scopes = [];
+    object.scopes = object.scopes || [];
   },
 
   properties: {
