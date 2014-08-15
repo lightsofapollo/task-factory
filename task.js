@@ -38,13 +38,13 @@ var Task = new Factory({
     defaultDeadline.setHours(defaultDeadline.getHours() + 24);
     object.deadline = object.deadline || defaultDeadline;
     object.scopes = object.scopes || [];
+    object.routes = object.routes || [];
   },
 
   properties: {
     schedulerId: 'testing',
     taskGroupId: 'testing',
     provisionerId: 'dont-spawn-machines',
-    routing: '',
     // workerType: ''
     retries: 1,
     priority: 5,
