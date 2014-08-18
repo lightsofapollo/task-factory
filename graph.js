@@ -31,6 +31,7 @@ var Graph = new Factory({
   onbuild: function(props) {
     props.tags = props.tags || {};
     props.scopes = props.scopes || [];
+    props.routes = props.routes || [];
     props.tasks = props.tasks || [];
     props.tasks = props.tasks.map(function(task) {
       return GraphTask.create(task);
