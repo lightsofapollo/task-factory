@@ -3,10 +3,12 @@
 */
 var Factory = require('object-factory');
 var Task = require('./task');
+var slugid = require('slugid');
 
 var GraphTask = new Factory({
   onbuild: function(props) {
     props.requires = props.requires || [];
+    props.taskId = props.taskId || slugid.v4();
   },
 
   properties: {

@@ -1,6 +1,6 @@
 {
   "name": "taskcluster-task-factory",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Task test factory",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "url": "https://github.com/taskcluster/task-factory/issues"
   },
   "dependencies": {
-    "object-factory": "^0.1.2"
+    "object-factory": "^0.1.2",
+    "slugid": "^1.0.2"
   }
 }
