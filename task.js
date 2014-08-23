@@ -42,8 +42,6 @@ var Task = new Factory({
   },
 
   properties: {
-    schedulerId: 'testing',
-    taskGroupId: 'testing',
     provisionerId: 'dont-spawn-machines',
     // workerType: ''
     retries: 1,
