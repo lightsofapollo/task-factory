@@ -1,6 +1,6 @@
 {
   "name": "taskcluster-task-factory",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Task test factory",
   "main": "index.js",
   "scripts": {

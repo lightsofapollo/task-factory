@@ -45,7 +45,6 @@ var Task = new Factory({
     provisionerId: 'dont-spawn-machines',
     // workerType: ''
     retries: 1,
-    priority: 5,
     // created: new Date()
     // deadline: new Date()
     payload: Payload,
